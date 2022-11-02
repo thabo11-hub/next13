@@ -1,12 +1,16 @@
 import Link from "next/link";
 
 async function getNotes() {
-    const res = await fetch(
-        'http://127.0.0.1:8090/api/collections/notes/records?page=1&perPage=30',
-        {cache: 'no-store'}
+
+    const db = new PockeBase('http://127.0.0.1:8090');
+    const data = await db.records.getList('notes');
+
+    //const res = await fetch(
+        //'http://127.0.0.1:8090/api/collections/notes/records?page=1&perPage=30',
+        //{cache: 'no-store'}
         // this is like getServerSideProps 
-        );
-    const data = await res.json();
+      //  );
+    //const data = await res.json();
     return data?.items as any[];
 }
 
