@@ -4,10 +4,18 @@ async function getNotes() {
     return data?.items as any[];
 }
 
-export default async function NotesPage(){
-    return(
+export default async function NotesPage() {
+    const notes = await getNotes();
+
+    return (
         <div>
             <h3> notes</h3>
+            <div>
+            {notes?.map((notes) =>{
+                return <Note key={note._id} note={note} />;
+            }))}
+
+            </div>
         </div>
     )
 }
