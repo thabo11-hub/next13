@@ -33,4 +33,4 @@ function Note({note}: any) {
             </div>
         </Link>
     );
-})
+}
